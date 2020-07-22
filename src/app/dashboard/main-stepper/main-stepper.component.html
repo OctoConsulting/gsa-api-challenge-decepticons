@@ -1,1 +1,75 @@
-<p>main-stepper works!</p>
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Pick a category to view</ng-template>
+      <div>
+        <div class="button-bar">
+          <button mat-raised-button color="primary" (click)="exportData(['Status', 'Number'],piechart1Data)">Export Data</button>
+        </div>
+        <div>
+          <div class="half-chart">
+            <app-piechart
+              [data]="piechart1Data"
+              [chartTitle]="'Overall view of submitted opportunities'"
+              (clickEvent)="onChart1Click($event)">
+            </app-piechart>
+          </div>
+          <div class="half-chart">
+            <app-tablechart
+              [data]="piechart1Data"
+              [tableHeaders]="['Status', 'Number']">
+            </app-tablechart>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Details</ng-template>
+      <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Opportunity Types">
+          <div class="tab-content">
+            <div class="button-bar">
+              <button mat-raised-button color="primary" (click)="exportData(['Type', 'Number'],piechart2Data)">Export Data</button>
+            </div>
+            <div>
+              <div class="half-chart" *ngIf="piechart2Data.length > 0">
+                <app-piechart
+                  [data]="piechart2Data"
+                  [chartTitle]="'Overall view of submitted opportunities'">
+                </app-piechart>
+              </div>
+              <div class="half-chart" *ngIf="piechart2Data.length > 0">
+                <app-tablechart
+                  [data]="piechart2Data"
+                  [tableHeaders]="['Type', 'Number']">
+                </app-tablechart>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Opportunity Consumers">
+          <div class="tab-content">
+            <div class="button-bar">
+              <button mat-raised-button color="primary" (click)="exportData(['Organization', 'Number'],barchart1Data)">Export Data</button>
+            </div>
+            <div>
+              <div *ngIf="barchart1Data.length > 0" class="half-chart">
+                <app-barchart
+                  [data]="barchart1Data"
+                  [chartTitle]="'Top 20 Opportunity Consumers'"></app-barchart>
+              </div>
+              <div class="half-chart">
+                <app-tablechart></app-tablechart>
+              </div>
+            </div>
+            
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    <div>
+      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
