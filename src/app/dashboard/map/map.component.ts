@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-map',
@@ -9,7 +10,7 @@ import { ApiService } from '../services/api-service.service';
 export class MapComponent implements OnInit {
   public geochartData = [];
   public loading = true;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private location: Location) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -27,6 +28,10 @@ export class MapComponent implements OnInit {
 
   public geochartClicked(event: any): void {
     console.log('State clicked: ' + event.key);
+  }
+
+  public goBack(): void {
+    this.location.back();
   }
 
 }

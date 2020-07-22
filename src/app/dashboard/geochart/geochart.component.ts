@@ -45,7 +45,7 @@ export class GeochartComponent implements OnInit, OnChanges {
   }
 
   public getChartWidth(): string {
-    return (0.8 * window.innerWidth) + '';
+    return (1 * document.getElementById('geochart-container').clientWidth) + '';
   }
 
 

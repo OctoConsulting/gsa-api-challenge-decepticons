@@ -1,5 +1,15 @@
+.back-icon, .chart-card {
+  display: block;
+}
 .chart-card {
-  width: 90%;
+  width: 70%;
   text-align: center;
   margin: 2% auto;
+}
+.back-icon {
+  margin: 2% 0 -5% 5%;
+}
+
+fa-icon:hover {
+  cursor: pointer;
 }
