@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-service.service';
 import { Location } from '@angular/common';
+import * as mockData from '../services/mock-db.json';
 
 @Component({
   selector: 'app-map',
@@ -22,7 +23,10 @@ export class MapComponent implements OnInit {
         this.geochartData = response;
         this.loading = false;
       },
-      error => console.log(error)
+      error => {
+        this.geochartData = mockData.map;
+        this.loading = false;
+      }
     );
   }
 
