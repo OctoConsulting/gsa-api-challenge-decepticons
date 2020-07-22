@@ -1,1 +1,14 @@
-<p>geochart works!</p>
+<div class="header block">
+  <h2>{{ chartHeader }}</h2>
+</div>
+<div class="chart block">
+  <google-chart
+  [type]="'GeoChart'"
+  [title]="chartTitle"
+  [width]="getChartWidth()"
+  [data]="geochartData"
+  [options]="geoChartOptions"
+  [dynamicResize]="true"
+  (select)="onClick($event)"></google-chart>
+</div>
+

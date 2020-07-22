@@ -1,1 +1,10 @@
-<p>map works!</p>
+<mat-progress-bar mode="indeterminate" *ngIf="loading; else chart"></mat-progress-bar>
+<ng-template #chart>
+  <mat-card class="chart-card">
+    <app-geochart
+    [chartTitle]="'Opportunity numbers submitted by States'"
+    [chartHeader]="'Opportunity numbers submitted by States'"
+    [data]="geochartData"
+    (clickEvent)="geochartClicked($event)"></app-geochart>
+  </mat-card>
+</ng-template>
