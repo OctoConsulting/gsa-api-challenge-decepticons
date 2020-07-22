@@ -34,6 +34,7 @@ import { BarchartComponent } from './barchart/barchart.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { MapComponent } from './map/map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -69,6 +70,7 @@ const routes: Routes = [
     DashboardComponent
   ],
   imports: [
+    HttpClientModule,
     FontAwesomeModule,
     CommonModule,
     RouterModule.forChild(routes),
