@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-statistics',
@@ -15,7 +16,7 @@ export class StatisticsComponent implements OnInit {
 
   public barchart1Data = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private location: Location) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -32,11 +33,9 @@ export class StatisticsComponent implements OnInit {
   }
 
   public onChart1Event(event: any): void {
-    this.loading = true;
     this.apiService.getOppTypesByStatus({}).subscribe(
       response => {
         this.piechart2Data = response;
-        this.loading = false;
       },
       error => console.log(error)
     );
@@ -44,7 +43,6 @@ export class StatisticsComponent implements OnInit {
     this.apiService.getOppCountsByConsumer({}).subscribe(
       response => {
         this.barchart1Data = response;
-        this.loading = false;
       },
       error => console.log(error)
     );
@@ -58,6 +56,10 @@ export class StatisticsComponent implements OnInit {
       this.piechart1Data[0]['count'] = 442514;
       this.piechart1Data = Object.assign([], this.piechart1Data);
     }
+  }
+
+  public goBack(): void {
+    this.location.back();
   }
 
 }
