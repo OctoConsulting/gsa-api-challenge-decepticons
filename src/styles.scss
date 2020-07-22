@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+$file-path: '../../../fonts' !default;
+$theme-image-path: '../../../img' !default;
+$theme-font-path: '../../../fonts' !default;
+$theme-hero-image: '../../img/hero.png' !default;
+
+@import 'uswds';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-datepicker-toggle-active {
+  color: #252f3e !important;
+}
+.mat-ink-bar, .mat-calendar-body-selected, .mat-step-icon-selected, .mat-step-icon-state-edit, .mat-raised-button.mat-primary {
+  background-color: #252f3e !important;
+}
