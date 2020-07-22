@@ -22,7 +22,6 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -59,6 +58,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "aot": true,
+              "baseHref": "/gsa-api-challenge-decepticons/",
               "budgets": [
                 {
                   "type": "initial",
