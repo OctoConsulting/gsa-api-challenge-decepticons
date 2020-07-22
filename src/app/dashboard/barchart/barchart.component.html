@@ -1,1 +1,11 @@
-<p>barchart works!</p>
+<div class="chart block">
+  <google-chart
+    id="bar-chart"
+    [type]="'ColumnChart'"
+    [width]="getChartWidth()"
+    [height]="getChartHeight()"
+    [dynamicResize]="true"
+    [data]="barchartData"
+    [options]="barchartOptions"
+    (select)="onClick($event)"></google-chart>
+</div>
