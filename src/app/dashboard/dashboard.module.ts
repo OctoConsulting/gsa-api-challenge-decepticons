@@ -35,6 +35,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { MapComponent } from './map/map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TablechartComponent } from './tablechart/tablechart.component';
 
 const routes: Routes = [
   {
@@ -67,7 +68,8 @@ const routes: Routes = [
     BarchartComponent,
     StatisticsComponent,
     MapComponent,
-    DashboardComponent
+    DashboardComponent,
+    TablechartComponent
   ],
   imports: [
     HttpClientModule,
