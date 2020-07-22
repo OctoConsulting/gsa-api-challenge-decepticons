@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-service.service';
 import { Location } from '@angular/common';
-
+import * as mockData from '../services/mock-db.json';
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
@@ -28,7 +28,10 @@ export class StatisticsComponent implements OnInit {
         this.piechart1Data = response;
         this.loading = false;
       },
-      error => console.log(error)
+      error => {
+        this.piechart1Data = mockData.status;
+        this.loading = false;
+      }
     );
   }
 
@@ -37,14 +40,14 @@ export class StatisticsComponent implements OnInit {
       response => {
         this.piechart2Data = response;
       },
-      error => console.log(error)
+      error => this.piechart2Data = mockData.type
     );
 
     this.apiService.getOppCountsByConsumer({}).subscribe(
       response => {
         this.barchart1Data = response;
       },
-      error => console.log(error)
+      error => this.barchart1Data = mockData.consumer
     );
   }
 
