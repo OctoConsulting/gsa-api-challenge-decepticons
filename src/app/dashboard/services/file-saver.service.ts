@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { saveAs } from 'file-saver';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,9 @@ export class FileSaverService {
 
     saveAs(blob, 'testFile.csv');
   }
+
+  getData(dataUrl : string): Observable<HttpResponse<Blob>> {		
+		return this.httpClient.get<Blob>(dataUrl, { observe: 'response' });
+   }
+
 }

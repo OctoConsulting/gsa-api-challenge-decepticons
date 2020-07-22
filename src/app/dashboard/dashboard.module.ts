@@ -34,6 +34,7 @@ import { BarchartComponent } from './barchart/barchart.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { MapComponent } from './map/map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FileDownloadComponent } from './file-download/file-download.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,8 @@ const routes: Routes = [
     BarchartComponent,
     StatisticsComponent,
     MapComponent,
-    DashboardComponent
+    DashboardComponent,
+    FileDownloadComponent
   ],
   imports: [
     FontAwesomeModule,
