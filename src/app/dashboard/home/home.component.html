@@ -1,44 +1,74 @@
-<main class="main-body grid-container">
-
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<main class="main-body">
   <div class="filter-bar">
     <app-filters [setDateRange]="setDate" [setOrgList]="orgList" (filterChange)="onFilterValueChange($event)"></app-filters>
   </div>
-
-  <div class="grid-row">
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-piechart [data]="piechart1Data" [chartTitle]="'Submitted Opportunities by Status'"
-        (clickEvent)="onChartClick('piechart1', $event)">
-      </app-piechart>
-    </mat-card>
-
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-piechart [data]="piechart2Data" [chartTitle]="'Submitted Opportunities by Type'">
-      </app-piechart>
-    </mat-card>
-
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart [data]="barchart1Data" [chartTitle]="'Top 20 Opportunity Consumer Organizations'"></app-barchart>
-    </mat-card>
+  <div class="grid-container">
+    <div class="grid-row">
+      <mat-card class="mat-elevation-z8 grid-col-3 tile">
+        <app-piechart
+          *ngIf="!loading; else loadingScreen"
+          [data]="piechart1Data"
+          [chartTitle]="'Submitted Opportunities by Status'"
+          (clickEvent)="onChartClick('piechart1', $event)">
+        </app-piechart>
+      </mat-card>
+  
+      <mat-card class="mat-elevation-z8 grid-col-3 tile">
+        <app-piechart
+          *ngIf="!loading; else loadingScreen"
+          [data]="piechart2Data"
+          [chartTitle]="'Submitted Opportunities by Type'">
+        </app-piechart>
+      </mat-card>
+  
+      <mat-card class="mat-elevation-z8 grid-col-3 tile">
+        <app-barchart
+          *ngIf="!loading; else loadingScreen"
+          [data]="barchart1Data"
+          [chartTitle]="'Top 20 Opportunity Consumer Organizations'">
+        </app-barchart>
+      </mat-card>
+    </div>
+  
+    <div class="grid-row">
+      <mat-card class="mat-elevation-z8 grid-col-3 tile">
+        <app-barchart
+          *ngIf="!loading; else loadingScreen"
+          [data]="barchart2Data"
+          [chartTitle]="'Top 20 NAICS Codes'">
+        </app-barchart>
+      </mat-card>
+  
+      <mat-card class="mat-elevation-z8 grid-col-3 tile">
+        <app-barchart
+          *ngIf="!loading; else loadingScreen"
+          [data]="barchart3Data"
+          [chartTitle]="'Top 20 Set Aside Codes'">
+        </app-barchart>
+      </mat-card>
+  
+      <mat-card class="mat-elevation-z8 grid-col-3 tile">
+        <app-barchart
+          *ngIf="!loading; else loadingScreen"
+          [data]="barchart4Data"
+          [chartTitle]="'Top 20 Classification Codes'">
+        </app-barchart>
+      </mat-card>
+    </div>
+  
+    <div class="grid-row">
+      <mat-card class="mat-elevation-z8 grid-col-6 tile tile-lg">
+        <app-geochart
+          *ngIf="!loading; else loadingScreen"
+          [chartTitle]="'Submitted Opportunities by States'"
+          [data]="geochartData">
+        </app-geochart>
+      </mat-card>
+    </div>
   </div>
-
-  <div class="grid-row">
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart [data]="barchart2Data" [chartTitle]="'Top 20 NAICS Codes'"></app-barchart>
-    </mat-card>
-
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart [data]="barchart3Data" [chartTitle]="'Top 20 Set Aside Codes'"></app-barchart>
-    </mat-card>
-
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart [data]="barchart4Data" [chartTitle]="'Top 20 Classification Codes'"></app-barchart>
-    </mat-card>
-  </div>
-
-  <div class="grid-row">
-    <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-geochart [chartTitle]="'Submitted Opportunities by States'" [data]="geochartData"></app-geochart>
-    </mat-card>
-  </div>
-
 </main>
+
+<ng-template #loadingScreen>
+  <div class="loading-screen">Loading Data...</div>
+</ng-template>

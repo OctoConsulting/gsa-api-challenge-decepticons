@@ -10,8 +10,19 @@
 .tile:hover{
   cursor: pointer;
 }
+.tile.tile-lg {
+  width: 63%;
+}
 
 .filter-bar {
   margin: 1.5%;
   text-align: center;
+}
+
+.loading-screen {
+  text-align: center;
+  font-size: 1em;
+  font-style: italic;
+  color: gray;
+  margin: 28%;
 }

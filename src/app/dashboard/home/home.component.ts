@@ -12,7 +12,7 @@ import { takeUntil, debounceTime, tap } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public loading = false;
+  public loading = true;
 
   public orgList = [];
 
@@ -34,7 +34,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private apiService: ApiService, private location: Location) {
     this.fetchDataSub.pipe(
-      debounceTime(300)
+      tap(() => this.loading = true),
+      debounceTime(100)
     ).subscribe(filterOptions => this.fetchAllData(filterOptions));
   }
 
@@ -82,6 +83,7 @@ export class HomeComponent implements OnInit {
           this.barchart3Data = responses[4];
           this.barchart4Data = responses[5];
           this.geochartData = responses[6];
+          this.loading = false;
         },
         error => console.log(error)
       );
