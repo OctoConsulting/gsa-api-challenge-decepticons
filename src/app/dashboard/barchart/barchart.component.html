@@ -1,8 +1,9 @@
-<div class="chart block" id="barchart-wrapper">
+<div class="chart block" [attr.id]="getContainerId()">
   <google-chart
     id="bar-chart"
     [type]="'ColumnChart'"
     [width]="getChartWidth()"
+    [height]="getChartHeight()"
     [dynamicResize]="true"
     [data]="barchartData"
     [options]="barchartOptions"

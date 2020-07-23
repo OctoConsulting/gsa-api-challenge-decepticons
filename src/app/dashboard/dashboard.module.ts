@@ -14,6 +14,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTableModule} from '@angular/material/table';
 import {MatRippleModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -31,6 +32,7 @@ import { FiltersComponent } from './filters/filters.component';
 import { PiechartComponent } from './piechart/piechart.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,8 @@ const routes: Routes = [
     GeochartComponent,
     FiltersComponent,
     PiechartComponent,
-    BarchartComponent
+    BarchartComponent,
+    DialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,7 +73,8 @@ const routes: Routes = [
     MatTabsModule,
     MatStepperModule,
     MatTableModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule
   ],
   providers: [
     ApiService,

@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.grid-container {
+  max-width: 84rem;
+}
+
 .tile {
   margin: 1.5% 1.5%;
   display: inline-block;
@@ -30,6 +34,18 @@
   font-style: italic;
   color: gray;
   margin: 28%;
+}
+
+.download-icon {
+  visibility: hidden;
+  display: block;
+  text-align: right;
+}
+
+mat-card:hover {
+  .download-icon {
+    visibility: initial;
+  }
 }
 
 @media screen and (max-width: 860px) {

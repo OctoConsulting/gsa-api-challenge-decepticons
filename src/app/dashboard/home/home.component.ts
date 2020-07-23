@@ -5,6 +5,8 @@ import * as mockData from '../services/mock-db.json';
 import * as moment from 'moment';
 import { Subject, Observable, forkJoin } from 'rxjs';
 import { takeUntil, debounceTime, tap } from 'rxjs/operators';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   private fetchDataSub = new Subject();
 
-  constructor(private apiService: ApiService, private fileService: FileSaverService) {
+  constructor(private apiService: ApiService, private fileService: FileSaverService, public dialog: MatDialog) {
     this.fetchDataSub.pipe(
       tap(() => this.loading = true),
       debounceTime(100)
@@ -48,9 +50,9 @@ export class HomeComponent implements OnInit {
     console.log(moment());
     const todaysDate = moment().toISOString();
     console.log(todaysDate);
-    const last30Days = moment().subtract(30, 'days').toISOString();
+    const last1Year = moment().subtract(1, 'years').toISOString();
     this.setDate = {
-      startDate: last30Days,
+      startDate: last1Year,
       endDate: todaysDate
     };
   }
@@ -122,6 +124,14 @@ export class HomeComponent implements OnInit {
       console.log(event);
       this.onFilterValueChange({status: event.key});
     }
+  }
+
+  public onViewDetails(type: string, title: string, data: any): void {
+    const modalRef = this.dialog.open(DialogComponent, {
+      height: (0.5 * window.innerHeight) + 'px',
+      width: (0.8 * window.innerWidth) + 'px',
+      data: {type, title, data}
+    });
   }
 
   public onFilterValueChange(event: any): void {
