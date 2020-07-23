@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-tablechart',
   templateUrl: './tablechart.component.html',
   styleUrls: ['./tablechart.component.scss']
 })
-export class TablechartComponent implements OnInit {
+export class TablechartComponent implements OnInit, OnChanges {
   @Input() chartTitle = '';
   @Input() chartHeader = '';
   @Input() tableHeaders = [];
@@ -25,6 +25,12 @@ export class TablechartComponent implements OnInit {
     this.processData(this.data);
     this.tablechartOptions.title = this.chartTitle;
     this.displayedColumns = this.tableHeaders;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data) {
+      this.processData(changes.data.currentValue);
+    }
   }
 
   public onClick(event: any): void {

@@ -51,7 +51,7 @@ export class GeochartComponent implements OnInit, OnChanges {
 
   private processData(data: any): void {
     if (data && data.length > 0) {
-      this.geochartData = data.map( item => [item.key, item.count]);
+      this.geochartData = data.filter(item => item.key).map( item => [item.key, +item.count]);
     }
   }
 

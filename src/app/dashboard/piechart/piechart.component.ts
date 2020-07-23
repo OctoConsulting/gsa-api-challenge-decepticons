@@ -56,7 +56,7 @@ export class PiechartComponent implements OnInit, OnChanges {
 
   private processData(data: any): void {
     if (data && data.length > 0) {
-      this.piechartData = data.map( item => [item.key, item.count]);
+      this.piechartData = data.map( item => [item.key, +item.count]);
     }
   }
 
