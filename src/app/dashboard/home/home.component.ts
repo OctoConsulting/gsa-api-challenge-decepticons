@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-service.service';
-import { Location } from '@angular/common';
+import { FileSaverService } from '../services/file-saver.service';
 import * as mockData from '../services/mock-db.json';
 import * as moment from 'moment';
 import { Subject, Observable, forkJoin } from 'rxjs';
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   private fetchDataSub = new Subject();
 
-  constructor(private apiService: ApiService, private location: Location) {
+  constructor(private apiService: ApiService, private fileService: FileSaverService) {
     this.fetchDataSub.pipe(
       tap(() => this.loading = true),
       debounceTime(100)
@@ -130,8 +130,8 @@ export class HomeComponent implements OnInit {
     this.fetchDataSub.next(this.filterOptions);
   }
 
-  public goBack(): void {
-    this.location.back();
+  public exportData($event: any): void {
+    // TO DO
   }
 
 }
