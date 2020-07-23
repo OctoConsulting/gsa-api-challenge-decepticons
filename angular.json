@@ -59,7 +59,6 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "aot": true,
-              "baseHref": "/gsa-api-challenge-decepticons/",
               "budgets": [
                 {
                   "type": "initial",
