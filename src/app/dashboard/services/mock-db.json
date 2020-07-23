@@ -408,11 +408,9 @@
     {"key": "Canceled", "count": 256476}
   ],
   "byopptype": [
-    {"key": "presol", "count": 741251},
-    {"key": "type 3", "count": 331024},
-    {"key": "grant", "count": 245681},
-    {"key": "contract", "count": 256476}
+
   ],
+  "byyear": [],
   "byvolume": [
     {"key": "Department of Defense", "count": 741251},
     {"key": "General Services Administration", "count": 331024},
