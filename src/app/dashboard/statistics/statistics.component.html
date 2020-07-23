@@ -1,18 +1,12 @@
-<mat-progress-bar mode="indeterminate" *ngIf="loading; else chart"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
-<ng-template #chart>
-  <div class="back-icon">
-    <fa-icon
-      (click)="goBack()"
-      [icon]="['fas', 'chevron-circle-left']" size="3x">
-    </fa-icon>
-  </div>
-  <mat-card class="mat-elevation-z6 card-1">
-    <app-filters (filterChange)="onFilterValueChange($event)"></app-filters>
-    <app-main-stepper
-      [piechart1Data]="piechart1Data"
-      [piechart2Data]="piechart2Data"
-      [barchart1Data]="barchart1Data"
-      (chart1Event)="onChart1Event($event)"></app-main-stepper>
-  </mat-card>
-</ng-template>
+
+<div class="back-icon">
+  <fa-icon (click)="goBack()" [icon]="['fas', 'chevron-circle-left']" size="3x">
+  </fa-icon>
+</div>
+<mat-card class="mat-elevation-z6 card-1">
+  <app-filters [setDateRange]="setDate" (filterChange)="onFilterValueChange($event)"></app-filters>
+  <app-main-stepper [piechart1Data]="piechart1Data" [piechart2Data]="piechart2Data" [barchart1Data]="barchart1Data"
+    (chart1Event)="onChart1Event($event)"></app-main-stepper>
+</mat-card>

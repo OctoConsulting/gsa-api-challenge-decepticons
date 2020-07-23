@@ -1,12 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent implements OnInit, OnChanges {
+  @Input() setDateRange = {};
   @Output() filterChange = new EventEmitter();
 
   public form;
@@ -15,19 +16,26 @@ export class FiltersComponent implements OnInit {
     'General Services Administration',
     'Department of Defense'
   ];
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.initFormControls();
-  }
-
-  private initFormControls(): void {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       startDate: [],
       endDate: [],
       org: []
     });
+  }
 
+  ngOnInit(): void {
+    this.initFormControls();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.setDateRange) {
+      this.form.get('startDate').setValue(changes.setDateRange.currentValue['startDate']);
+      this.form.get('endDate').setValue(changes.setDateRange.currentValue['endDate']);
+    }
+  }
+
+  private initFormControls(): void {
     this.form.valueChanges.subscribe(
       newValue => {
         if ((newValue.startDate && newValue.endDate) || newValue.org) {

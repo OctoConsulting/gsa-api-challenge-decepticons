@@ -1,16 +1,12 @@
-<mat-progress-bar mode="indeterminate" *ngIf="loading; else chart"></mat-progress-bar>
-<ng-template #chart>
-  <div class="back-icon">
-    <fa-icon
-      (click)="goBack()"
-      [icon]="['fas', 'chevron-circle-left']" size="3x">
-    </fa-icon>
-  </div>
-  <mat-card class="mat-elevation-z6 chart-card">
-    <app-geochart
-    [chartTitle]="'Opportunity numbers submitted by States'"
-    [chartHeader]="'Opportunity numbers submitted by States'"
-    [data]="geochartData"
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+<div class="back-icon">
+  <fa-icon (click)="goBack()" [icon]="['fas', 'chevron-circle-left']" size="3x">
+  </fa-icon>
+</div>
+<mat-card class="mat-elevation-z6 chart-card">
+  <app-filters [setDateRange]="setDate" (filterChange)="onFilterValueChange($event)"></app-filters>
+  <app-geochart [chartTitle]="'Opportunity numbers submitted by States'"
+    [chartHeader]="'Opportunity numbers submitted by States'" [data]="geochartData"
     (clickEvent)="geochartClicked($event)"></app-geochart>
-  </mat-card>
-</ng-template>
+</mat-card>
