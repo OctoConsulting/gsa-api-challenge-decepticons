@@ -18,13 +18,15 @@ export class GeochartComponent implements OnInit, OnChanges {
   public geoChartOptions = {
     region: 'US',
     displayMode: 'regions',
-    resolution: 'provinces'
+    resolution: 'provinces',
+    title: ''
   };
 
   constructor() { }
 
   ngOnInit(): void {
     this.processData(this.data);
+    this.geoChartOptions.title = this.chartTitle;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
