@@ -6,6 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChange
   styleUrls: ['./barchart.component.scss']
 })
 export class BarchartComponent implements OnInit, OnChanges {
+  @Input() chartId = '';
   @Input() chartTitle = '';
   @Input() chartHeader = '';
   @Input() data;
@@ -52,7 +53,15 @@ export class BarchartComponent implements OnInit, OnChanges {
   }
 
   public getChartWidth(): string {
-    return (1 * document.getElementById('barchart-wrapper').clientWidth) + '';
+    return (1 * document.getElementById(this.getContainerId()).clientWidth) + '';
+  }
+
+  public getChartHeight(): string {
+    return (1 * document.getElementById(this.getContainerId()).clientHeight) + '';
+  }
+
+  public getContainerId(): string {
+    return `barchart-wrapper-${this.chartId}`;
   }
 
   private processData(data: any): void {

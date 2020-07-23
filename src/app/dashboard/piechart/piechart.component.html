@@ -1,12 +1,13 @@
 <div class="header block">
   <h2>{{ chartHeader }}</h2>
 </div>
-<div class="chart block" id="pie-chart-wrapper">
+<div class="chart block" [attr.id]="getContainerId()">
   <google-chart
     id="pie-chart"
     [type]="'PieChart'"
     [width]="getChartWidth()"
-    [dynamicResize]="true"
+    [height]="getChartHeight()"
+
     [data]="piechartData"
     [options]="piechartOptions"
     (select)="onClick($event)"></google-chart>

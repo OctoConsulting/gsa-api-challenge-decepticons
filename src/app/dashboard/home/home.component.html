@@ -4,50 +4,62 @@
     <div class="grid-col-12 top-bar">
       <app-filters [setDateRange]="setDate" [setOrgList]="orgList" (filterChange)="onFilterValueChange($event)">
       </app-filters>
-      <button mat-raised-button color="primary" (click)="exportData($event)">Export Data</button>
     </div>
   </div>
   <div class="grid-row">
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-piechart *ngIf="!loading; else loadingScreen" [data]="piechart1Data"
-        [chartTitle]="'Submitted Opportunities by Status'" (clickEvent)="onChartClick('piechart1', $event)">
+      <app-piechart *ngIf="!loading; else loadingScreen" [data]="piechart1Data" [chartId]="'piechart1'"
+        [chartTitle]="'Opportunities by Status'" (clickEvent)="onChartClick('piechart1', $event)">
       </app-piechart>
+      <fa-icon [icon]="['fas', 'search-plus']" class="download-icon" title="Export Data" (click)="onViewDetails('piechart', 'Opportunities by Status', piechart1Data)">View Details</fa-icon>
+      <fa-icon [icon]="['fas', 'download']" class="download-icon" title="Export Data">Export</fa-icon>
     </mat-card>
 
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-piechart *ngIf="!loading; else loadingScreen" [data]="piechart2Data"
-        [chartTitle]="'Submitted Opportunities by Type'">
+      <app-piechart *ngIf="!loading; else loadingScreen" [data]="piechart2Data" [chartId]="'piechart2'"
+        [chartTitle]="'Opportunities by Type'">
       </app-piechart>
+      <fa-icon [icon]="['fas', 'search-plus']" class="download-icon" title="Export Data" (click)="onViewDetails('piechart', 'Opportunities by Type', piechart2Data)">View Details</fa-icon>
+      <fa-icon [icon]="['fas', 'download']" class="download-icon" title="Export Data">Export</fa-icon>
     </mat-card>
 
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
       <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart1Data"
-        [chartTitle]="'Top 20 Opportunity Consumer Organizations'">
+        [chartId]="'barchart1'"
+        [chartTitle]="'Top 10 Organizations by Opportunity Volume'">
       </app-barchart>
+      <fa-icon [icon]="['fas', 'search-plus']" class="download-icon" title="Export Data" (click)="onViewDetails('barchart', 'Top 10 Organizations by Opportunity Volume', barchart1Data)">View Details</fa-icon>
+      <fa-icon [icon]="['fas', 'download']" class="download-icon" title="Export Data">Export</fa-icon>
     </mat-card>
   </div>
 
   <div class="grid-row">
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart2Data" [chartTitle]="'Top 20 NAICS Codes'">
+      <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart2Data" [chartTitle]="'Opportunities by top 10 NAICS Code'" [chartId]="'barchart2'">
       </app-barchart>
+      <fa-icon [icon]="['fas', 'search-plus']" class="download-icon" title="Export Data" (click)="onViewDetails('barchart', 'Opportunities by top 10 NAICS Code', barchart2Data)">View Details</fa-icon>
+      <fa-icon [icon]="['fas', 'download']" class="download-icon" title="Export Data">Export</fa-icon>
     </mat-card>
 
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart3Data" [chartTitle]="'Top 20 Set Aside Codes'">
+      <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart3Data" [chartId]="'barchart3'" [chartTitle]="'Opportunities by top 10 Set Aside Code'">
       </app-barchart>
+      <fa-icon [icon]="['fas', 'search-plus']" class="download-icon" title="Export Data" (click)="onViewDetails('barchart', 'Opportunities by top 10 Set Aside Code', barchart3Data)">View Details</fa-icon>
+      <fa-icon [icon]="['fas', 'download']" class="download-icon" title="Export Data">Export</fa-icon>
     </mat-card>
 
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
-      <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart4Data"
-        [chartTitle]="'Top 20 Classification Codes'">
+      <app-barchart *ngIf="!loading; else loadingScreen" [data]="barchart4Data" [chartId]="'barchart4'"
+        [chartTitle]="'Opportunities by top 10 Classification Code'">
       </app-barchart>
+      <fa-icon [icon]="['fas', 'search-plus']" class="download-icon" title="Export Data" (click)="onViewDetails('barchart', 'Opportunities by top 10 Classification Code', barchart4Data)">View Details</fa-icon>
+      <fa-icon [icon]="['fas', 'download']" class="download-icon" title="Export Data">Export</fa-icon>
     </mat-card>
   </div>
 
   <div class="grid-row">
     <mat-card class="mat-elevation-z8 grid-col-6 tile tile-lg">
-      <app-geochart *ngIf="!loading; else loadingScreen" [chartTitle]="'Submitted Opportunities by States'"
+      <app-geochart *ngIf="!loading; else loadingScreen" [chartTitle]="'Opportunities by Place of Performance (State)'"
         [data]="geochartData">
       </app-geochart>
     </mat-card>

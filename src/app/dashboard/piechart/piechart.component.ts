@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChange
   styleUrls: ['./piechart.component.scss']
 })
 export class PiechartComponent implements OnInit, OnChanges {
+  @Input() chartId = '';
   @Input() chartTitle = '';
   @Input() chartHeader = '';
   @Input() data;
@@ -16,7 +17,8 @@ export class PiechartComponent implements OnInit, OnChanges {
   public piechartData = [];
   public piechartOptions = {
     legend: {
-      position: 'none'
+      position: 'right',
+      alignment: 'center'
     },
     pieSliceText: 'percentage',
     title: ''
@@ -47,9 +49,17 @@ export class PiechartComponent implements OnInit, OnChanges {
   }
 
   public getChartWidth(): string {
-    return (1 * document.getElementById('pie-chart-wrapper').clientWidth) + '';
+    return (1 * document.getElementById(this.getContainerId()).clientWidth) + '';
   }
 
+  public getChartHeight(): string {
+    return (1 * document.getElementById(this.getContainerId()).clientHeight) + '';
+  }
+
+  public getContainerId(): string {
+    return `piechart-wrapper-${this.chartId}`;
+  }
+  
   private processData(data: any): void {
     if (data && data.length > 0) {
       this.piechartData = data.map( item => [item.key, +item.count]);
