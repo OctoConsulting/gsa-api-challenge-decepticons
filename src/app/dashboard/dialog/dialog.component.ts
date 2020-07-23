@@ -41,7 +41,6 @@ export class DialogComponent implements OnInit {
   }
 
   private parseData(data: any): void {
-    console.log(data);
     if (data) {
       switch (data.chartType) {
         case 'piechart':
