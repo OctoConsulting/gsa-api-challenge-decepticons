@@ -1,6 +1,6 @@
 ##	Opportunities Data Visualization
 
-![Analytics Dashboard](imgs/dashboard.PNG)
+![Analytics Dashboard](img/dashboard.PNG)
 
 ###	Piechart - Opportunities By Status
 Display a pie-chart of Opportunities by Status. It includes active, active latest, archived opportunities.
