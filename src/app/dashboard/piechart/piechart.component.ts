@@ -39,7 +39,6 @@ export class PiechartComponent implements OnInit, OnChanges {
   public onClick(event: any): void {
     if (event && event.selection && event.selection[0]) {
       const idx = event.selection[0].row;
-      console.log(this.piechartData);
       const emittedObj = {
         key: this.piechartData[idx][0],
         count: this.piechartData[idx][1]
@@ -59,7 +58,7 @@ export class PiechartComponent implements OnInit, OnChanges {
   public getContainerId(): string {
     return `piechart-wrapper-${this.chartId}`;
   }
-  
+
   private processData(data: any): void {
     if (data && data.length > 0) {
       this.piechartData = data.map( item => [item.key, +item.count]);

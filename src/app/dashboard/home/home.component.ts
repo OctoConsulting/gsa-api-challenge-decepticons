@@ -48,9 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   private initDateRange(): void {
-    console.log(moment());
     const todaysDate = moment().toISOString();
-    console.log(todaysDate);
     const last1Year = moment().subtract(1, 'years').toISOString();
     this.setDate = {
       startDate: last1Year,
@@ -128,15 +126,14 @@ export class HomeComponent implements OnInit {
 
   public onChartClick(chartName: string, event: any): void {
     if (chartName === 'piechart1') {
-      console.log(event);
       this.onFilterValueChange({status: event.key});
     }
   }
 
   public onViewDetails(type: string, apiCall: string, title: string, data: any): void {
     const modalRef = this.dialog.open(DialogComponent, {
-      height: (0.5 * window.innerHeight) + 'px',
-      width: (0.8 * window.innerWidth) + 'px',
+      height: (0.6 * window.innerHeight) + 'px',
+      width: (0.6 * window.innerWidth) + 'px',
       data: {chartType: type, apiCall, title, filterOptions : this.filterOptions, data}
     });
   }
@@ -145,10 +142,6 @@ export class HomeComponent implements OnInit {
     Object.keys(event).forEach(key => (event[key] == null) && delete event[key]);
     this.filterOptions = {...this.filterOptions, ...event};
     this.fetchDataSub.next(this.filterOptions);
-  }
-
-  public exportData($event: any): void {
-    // TO DO
   }
 
 }
