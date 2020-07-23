@@ -1,17 +1,17 @@
 {
-  "status": [
+  "bystatus": [
     {"key": "Active", "count": 741251},
     {"key": "Inactive", "count": 331024},
     {"key": "Archived", "count": 245681},
     {"key": "Canceled", "count": 256476}
   ],
-  "type": [
+  "byopptype": [
     {"key": "presol", "count": 741251},
     {"key": "type 3", "count": 331024},
     {"key": "grant", "count": 245681},
     {"key": "contract", "count": 256476}
   ],
-  "consumer": [
+  "byvolume": [
     {"key": "Department of Defense", "count": 741251},
     {"key": "General Services Administration", "count": 331024},
     {"key": "Department of Commerce", "count": 245681},
@@ -33,7 +33,237 @@
     {"key": "Department of Homeland Security", "count": 456476},
     {"key": "Federal Acquisition Services", "count": 256116}
   ],
-  "map": [
+  "bynaicscode": [
+      {
+      "key": "59",
+      "count": "707"
+      },
+      {
+      "key": "25",
+      "count": "664"
+      },
+      {
+      "key": "53",
+      "count": "601"
+      },
+      {
+      "key": "6515",
+      "count": "535"
+      },
+      {
+      "key": "99",
+      "count": "471"
+      },
+      {
+      "key": "6640",
+      "count": "458"
+      },
+      {
+      "key": "47",
+      "count": "302"
+      },
+      {
+      "key": "D304",
+      "count": "274"
+      },
+      {
+      "key": "61",
+      "count": "268"
+      },
+      {
+      "key": "7030",
+      "count": "253"
+      },
+      {
+      "key": "R499",
+      "count": "222"
+      },
+      {
+      "key": "Z2AA",
+      "count": "214"
+      },
+      {
+      "key": "1680",
+      "count": "195"
+      },
+      {
+      "key": "X1AA",
+      "count": "189"
+      },
+      {
+      "key": "48",
+      "count": "174"
+      },
+      {
+      "key": "Y1PZ",
+      "count": "173"
+      },
+      {
+      "key": "Z2JZ",
+      "count": "169"
+      },
+      {
+      "key": "Y1JZ",
+      "count": "158"
+      },
+      {
+      "key": "J065",
+      "count": "150"
+      },
+      {
+      "key": "5998",
+      "count": "145"
+      }
+  ],
+  "bysetasidecode": [
+    {
+    "key": "SBA",
+    "count": "7842"
+    },
+    {
+    "key": "SDVOSBC",
+    "count": "1195"
+    },
+    {
+    "key": "HZC",
+    "count": "208"
+    },
+    {
+    "key": "8A",
+    "count": "205"
+    },
+    {
+    "key": "WOSB",
+    "count": "155"
+    },
+    {
+    "key": "8AN",
+    "count": "113"
+    },
+    {
+    "key": "ISBEE",
+    "count": "63"
+    },
+    {
+    "key": "SBP",
+    "count": "51"
+    },
+    {
+    "key": "SDVOSBS",
+    "count": "45"
+    },
+    {
+    "key": "LAS",
+    "count": "22"
+    },
+    {
+    "key": "BICiv",
+    "count": "19"
+    },
+    {
+    "key": "EDWOSB",
+    "count": "15"
+    },
+    {
+    "key": "VSA",
+    "count": "9"
+    },
+    {
+    "key": "HZS",
+    "count": "6"
+    },
+    {
+    "key": "WOSBSS",
+    "count": "6"
+    },
+    {
+    "key": "IEE",
+    "count": "2"
+    }
+  ],
+  "byclassificationcode": [
+    {
+    "key": "59",
+    "count": "707"
+    },
+    {
+    "key": "25",
+    "count": "664"
+    },
+    {
+    "key": "53",
+    "count": "601"
+    },
+    {
+    "key": "6515",
+    "count": "535"
+    },
+    {
+    "key": "99",
+    "count": "471"
+    },
+    {
+    "key": "6640",
+    "count": "458"
+    },
+    {
+    "key": "47",
+    "count": "302"
+    },
+    {
+    "key": "D304",
+    "count": "274"
+    },
+    {
+    "key": "61",
+    "count": "268"
+    },
+    {
+    "key": "7030",
+    "count": "253"
+    },
+    {
+    "key": "R499",
+    "count": "222"
+    },
+    {
+    "key": "Z2AA",
+    "count": "214"
+    },
+    {
+    "key": "1680",
+    "count": "195"
+    },
+    {
+    "key": "X1AA",
+    "count": "189"
+    },
+    {
+    "key": "48",
+    "count": "174"
+    },
+    {
+    "key": "Y1PZ",
+    "count": "173"
+    },
+    {
+    "key": "Z2JZ",
+    "count": "169"
+    },
+    {
+    "key": "Y1JZ",
+    "count": "158"
+    },
+    {
+    "key": "J065",
+    "count": "150"
+    },
+    {
+    "key": "5998",
+    "count": "145"
+    }
+  ],
+  "bypopstate": [
     { "key": "AL", "count": 234 },
     { "key": "AK", "count": 489 },
     { "key": "AZ", "count": 172 },

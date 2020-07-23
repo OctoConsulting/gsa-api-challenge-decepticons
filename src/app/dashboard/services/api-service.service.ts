@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = 'http://ec2-34-205-247-199.compute-1.amazonaws.com:8080/opps/v1';
-  private readonly apiKey = 'zAdl8SNdzc1Y06aCX6JN1nXIqT060ejvG0LJbDKK';
+  private readonly baseUrl = 'http://34.205.247.199:8080/opps/v1';
+
+  // private readonly baseUrl = 'http://127.0.0.1:3000';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,11 +17,23 @@ export class ApiService {
   }
 
   getOppTypesByStatus(queryParams: any): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/type`, {params: queryParams});
+    return this.httpClient.get(`${this.baseUrl}/byopptype`, {params: queryParams});
   }
 
   getOppCountsByConsumer(queryParams: any): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/byvolume`, {params: queryParams});
+  }
+
+  getOppCountsByNAICSCode(queryParams: any): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/bynaicscode`, {params: queryParams});
+  }
+
+  getOppCountsBySetAsideCode(queryParams: any): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/bysetasidecode`, {params: queryParams});
+  }
+
+  getOppCountsByClassificationCode(queryParams: any): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/byclassificationcode`, {params: queryParams});
   }
 
   getOppCountsByGeoData(queryParams: any): Observable<any> {

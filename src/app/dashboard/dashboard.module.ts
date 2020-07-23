@@ -29,32 +29,14 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { GeochartComponent } from './geochart/geochart.component';
 import { FiltersComponent } from './filters/filters.component';
 import { PiechartComponent } from './piechart/piechart.component';
-import { MainStepperComponent } from './main-stepper/main-stepper.component';
 import { BarchartComponent } from './barchart/barchart.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { MapComponent } from './map/map.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TablechartComponent } from './tablechart/tablechart.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'statistics',
-        component: StatisticsComponent
-      },
-      {
-        path: 'map',
-        component: MapComponent
-      }
-    ]
+    component: HomeComponent
   }
 ];
 
@@ -64,12 +46,7 @@ const routes: Routes = [
     GeochartComponent,
     FiltersComponent,
     PiechartComponent,
-    MainStepperComponent,
-    BarchartComponent,
-    StatisticsComponent,
-    MapComponent,
-    DashboardComponent,
-    TablechartComponent
+    BarchartComponent
   ],
   imports: [
     HttpClientModule,

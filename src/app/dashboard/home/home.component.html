@@ -1,13 +1,44 @@
-<main class="main-body">
-  <div class="grid-container">
-    <div class="grid-row">
-      <mat-card matRipple class="mat-elevation-z8 grid-col-5 tile" [routerLink]="['./statistics']">
-        <img src="assets/img/piechart.png"/>
-      </mat-card>
+<main class="main-body grid-container">
 
-      <mat-card matRipple class="mat-elevation-z8 grid-col-5 tile" [routerLink]="['./map']">
-        <img src="assets/img/geochart.png"/>
-      </mat-card>
-    </div>
+  <div class="filter-bar">
+    <app-filters [setDateRange]="setDate" (filterChange)="onFilterValueChange($event)"></app-filters>
   </div>
+
+  <div class="grid-row">
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-piechart [data]="piechart1Data" [chartTitle]="'Submitted Opportunities by Status'"
+        (clickEvent)="onChart1Click($event)">
+      </app-piechart>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-piechart [data]="piechart2Data" [chartTitle]="'Submitted Opportunities by Type'">
+      </app-piechart>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-barchart [data]="barchart1Data" [chartTitle]="'Top 20 Opportunity Consumer Organizations'"></app-barchart>
+    </mat-card>
+  </div>
+
+  <div class="grid-row">
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-barchart [data]="barchart2Data" [chartTitle]="'Top 20 NAICS Codes'"></app-barchart>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-barchart [data]="barchart3Data" [chartTitle]="'Top 20 Set Aside Codes'"></app-barchart>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-barchart [data]="barchart4Data" [chartTitle]="'Top 20 Classification Codes'"></app-barchart>
+    </mat-card>
+  </div>
+
+  <div class="grid-row">
+    <mat-card class="mat-elevation-z8 grid-col-3 tile">
+      <app-geochart [chartTitle]="'Submitted Opportunities by States'" [data]="geochartData"></app-geochart>
+    </mat-card>
+  </div>
+
 </main>

@@ -1,0 +1,26 @@
+.nav.list {
+  list-style: none;
+}
+
+.displayName {
+  float: right;
+}
+
+.title, 
+.displayName {
+  display: inline-block;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.displayName {
+  font-size: 14px;
+  margin-left: auto;
+}
+
+.custom-color {
+  background-color: #252f3e;
+  color: #FFFFFF;
+}

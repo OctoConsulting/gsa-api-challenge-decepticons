@@ -52,16 +52,12 @@ export class BarchartComponent implements OnInit, OnChanges {
   }
 
   public getChartWidth(): string {
-    return (0.6 * window.innerWidth) + '';
-  }
-
-  public getChartHeight(): string {
-    return (0.5 * window.innerWidth) + '';
+    return (1 * document.getElementById('barchart-wrapper').clientWidth) + '';
   }
 
   private processData(data: any): void {
     if (data && data.length > 0) {
-      this.barchartData = data.map( item => [item.key, item.count]);
+      this.barchartData = data.map( item => [item.key, +item.count]);
     }
   }
 

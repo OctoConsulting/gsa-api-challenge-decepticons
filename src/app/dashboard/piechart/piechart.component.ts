@@ -16,8 +16,7 @@ export class PiechartComponent implements OnInit, OnChanges {
   public piechartData = [];
   public piechartOptions = {
     legend: {
-      position: 'right',
-      alignment: 'center'
+      position: 'none'
     },
     pieSliceText: 'percentage',
     title: ''
@@ -47,11 +46,7 @@ export class PiechartComponent implements OnInit, OnChanges {
   }
 
   public getChartWidth(): string {
-    return (0.4 * window.innerWidth) + '';
-  }
-
-  public getChartHeight(): string {
-    return (0.3 * window.innerWidth) + '';
+    return (1 * document.getElementById('pie-chart-wrapper').clientWidth) + '';
   }
 
   private processData(data: any): void {
