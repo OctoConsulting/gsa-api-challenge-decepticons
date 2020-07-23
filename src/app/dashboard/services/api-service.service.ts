@@ -12,6 +12,10 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getOrgList(queryParams: any): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/getorgs`, {params: queryParams});
+  }
+
   getOppByStatus(queryParams: any): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/bystatus`, {params: queryParams});
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-filters',
@@ -8,6 +9,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class FiltersComponent implements OnInit, OnChanges {
   @Input() setDateRange = {};
+  @Input() setOrgList = {};
   @Output() filterChange = new EventEmitter();
 
   public form;
@@ -20,7 +22,7 @@ export class FiltersComponent implements OnInit, OnChanges {
     this.form = this.fb.group({
       startDate: [],
       endDate: [],
-      org: []
+      orgname: []
     });
   }
 
@@ -33,16 +35,29 @@ export class FiltersComponent implements OnInit, OnChanges {
       this.form.get('startDate').setValue(changes.setDateRange.currentValue['startDate']);
       this.form.get('endDate').setValue(changes.setDateRange.currentValue['endDate']);
     }
+    if (changes.setOrgList) {
+      this.onSetOrgList(changes.setOrgList.currentValue);
+    }
   }
 
   private initFormControls(): void {
     this.form.valueChanges.subscribe(
       newValue => {
-        if ((newValue.startDate && newValue.endDate) || newValue.org) {
+        if ((newValue.startDate && newValue.endDate && this.form.valid) || newValue.org) {
+          if (newValue.startDate) {
+            newValue['startDate'] = moment(newValue.startDate).format('YYYY-MM-DD').toString();
+          }
+          if (newValue.endDate) {
+            newValue['endDate'] = moment(newValue.endDate).format('YYYY-MM-DD').toString();
+          }
           this.filterChange.emit(newValue);
         }
       }
     );
+  }
+
+  private onSetOrgList(orgList: any): void {
+    this.orgList = orgList.map(org => org.key);
   }
 
 }

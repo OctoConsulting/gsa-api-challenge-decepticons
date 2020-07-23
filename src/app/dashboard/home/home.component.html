@@ -1,13 +1,13 @@
 <main class="main-body grid-container">
 
   <div class="filter-bar">
-    <app-filters [setDateRange]="setDate" (filterChange)="onFilterValueChange($event)"></app-filters>
+    <app-filters [setDateRange]="setDate" [setOrgList]="orgList" (filterChange)="onFilterValueChange($event)"></app-filters>
   </div>
 
   <div class="grid-row">
     <mat-card class="mat-elevation-z8 grid-col-3 tile">
       <app-piechart [data]="piechart1Data" [chartTitle]="'Submitted Opportunities by Status'"
-        (clickEvent)="onChart1Click($event)">
+        (clickEvent)="onChartClick('piechart1', $event)">
       </app-piechart>
     </mat-card>
 

@@ -37,9 +37,10 @@ export class PiechartComponent implements OnInit, OnChanges {
   public onClick(event: any): void {
     if (event && event.selection && event.selection[0]) {
       const idx = event.selection[0].row;
+      console.log(this.piechartData);
       const emittedObj = {
         key: this.piechartData[idx][0],
-        count: this.piechartData[idx[1]]
+        count: this.piechartData[idx][1]
       };
       this.clickEvent.emit(emittedObj);
     }
