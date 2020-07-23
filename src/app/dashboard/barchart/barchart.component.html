@@ -1,5 +1,6 @@
 <div class="chart block" [attr.id]="getContainerId()">
   <google-chart
+    *ngIf="barchartData.length > 0; else noData"
     id="bar-chart"
     [type]="'ColumnChart'"
     [width]="getChartWidth()"
@@ -9,3 +10,7 @@
     [options]="barchartOptions"
     (select)="onClick($event)"></google-chart>
 </div>
+
+<ng-template #noData>
+  <div class="no-data">No Data Available</div>
+</ng-template>

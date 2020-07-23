@@ -3,12 +3,16 @@
 </div>
 <div class="chart block" [attr.id]="getContainerId()">
   <google-chart
+    *ngIf="piechartData.length > 0; else noData"
     id="pie-chart"
     [type]="'PieChart'"
     [width]="getChartWidth()"
     [height]="getChartHeight()"
-
     [data]="piechartData"
     [options]="piechartOptions"
     (select)="onClick($event)"></google-chart>
 </div>
+
+<ng-template #noData>
+  <div class="no-data">No Data Available</div>
+</ng-template>

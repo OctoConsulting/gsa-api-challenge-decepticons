@@ -2,6 +2,15 @@
   width: 100%;
 }
 
+.title-header {
+  text-align: center;
+  color: #252f3e;
+  p {
+    font-style: italic;
+    margin-top: -20px;
+  }
+}
+
 .grid-container {
   max-width: 84rem;
 }
@@ -36,14 +45,19 @@
   margin: 28%;
 }
 
-.download-icon {
+.interactive-icon {
   visibility: hidden;
-  display: block;
+  display: inline-block;
   text-align: right;
 }
 
+.control-bar {
+  margin-left: 6%;
+  margin-bottom: 2%;
+}
+
 mat-card:hover {
-  .download-icon {
+  .interactive-icon {
     visibility: initial;
   }
 }
