@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-service.service';
-import { Location } from '@angular/common';
+import { FileSaverService } from '../services/file-saver.service';
 import * as mockData from '../services/mock-db.json';
 import * as moment from 'moment';
 import { Subject, Observable, forkJoin } from 'rxjs';
@@ -12,34 +12,36 @@ import { takeUntil, debounceTime, tap } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public loading = false;
+  public loading = true;
+
+  public orgList = [];
 
   public piechart1Data = [];
-
   public piechart2Data = [];
 
   public barchart1Data = [];
-
   public barchart2Data = [];
-
   public barchart3Data = [];
-
   public barchart4Data = [];
 
   public geochartData = [];
 
   public setDate = {};
 
+  public filterOptions = {};
+
   private fetchDataSub = new Subject();
 
-  constructor(private apiService: ApiService, private location: Location) {
+  constructor(private apiService: ApiService, private fileService: FileSaverService) {
     this.fetchDataSub.pipe(
-      debounceTime(300)
+      tap(() => this.loading = true),
+      debounceTime(100)
     ).subscribe(filterOptions => this.fetchAllData(filterOptions));
   }
 
   ngOnInit(): void {
     this.initDateRange();
+    this.loadOrgDropdown();
   }
 
   private initDateRange(): void {
@@ -51,6 +53,16 @@ export class HomeComponent implements OnInit {
       startDate: last30Days,
       endDate: todaysDate
     };
+  }
+
+  private loadOrgDropdown(): void {
+    const queryParams = {
+      level: 1
+    };
+    this.apiService.getOrgList(queryParams).subscribe(
+      response => this.orgList = response,
+      error => this.orgList = mockData.getorgs
+    );
   }
 
   private fetchAllData(filterOptions = {}): void {
@@ -71,6 +83,7 @@ export class HomeComponent implements OnInit {
           this.barchart3Data = responses[4];
           this.barchart4Data = responses[5];
           this.geochartData = responses[6];
+          this.loading = false;
         },
         error => console.log(error)
       );
@@ -104,27 +117,21 @@ export class HomeComponent implements OnInit {
     return this.apiService.getOppCountsByGeoData(queryParams);
   }
 
-  public onChart1Click(event: any): void {
-    // TODO
+  public onChartClick(chartName: string, event: any): void {
+    if (chartName === 'piechart1') {
+      console.log(event);
+      this.onFilterValueChange({status: event.key});
+    }
   }
 
   public onFilterValueChange(event: any): void {
-    let filterOptions = {};
-    if (event.startDate) {
-      filterOptions['startDate'] = moment(event.startDate).format('YYYY-MM-DD').toString();
-    }
-    if (event.endDate) {
-      filterOptions['endDate'] = moment(event.endDate).format('YYYY-MM-DD').toString();
-    }
-    if (event.org) {
-      filterOptions['org'] = event.org;
-    }
-
-    this.fetchDataSub.next(filterOptions);
+    Object.keys(event).forEach(key => (event[key] == null) && delete event[key]);
+    this.filterOptions = {...this.filterOptions, ...event};
+    this.fetchDataSub.next(this.filterOptions);
   }
 
-  public goBack(): void {
-    this.location.back();
+  public exportData($event: any): void {
+    // TO DO
   }
 
 }

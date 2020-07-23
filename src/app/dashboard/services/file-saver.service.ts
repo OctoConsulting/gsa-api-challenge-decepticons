@@ -17,6 +17,6 @@ export class FileSaverService {
     console.log(csvArray);
     const blob = new Blob([csvArray], {type: 'text/csv'});
 
-    saveAs(blob, 'testFile.csv');
+    saveAs(blob, 'exported_Analytics.csv');
   }
 }

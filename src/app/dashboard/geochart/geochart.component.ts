@@ -7,7 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChange
 })
 export class GeochartComponent implements OnInit, OnChanges {
   @Input() chartTitle = '';
-  @Input() chartHeader = '';
   @Input() data;
 
   @Output() clickEvent = new EventEmitter<any>();
@@ -18,15 +17,13 @@ export class GeochartComponent implements OnInit, OnChanges {
   public geoChartOptions = {
     region: 'US',
     displayMode: 'regions',
-    resolution: 'provinces',
-    title: ''
+    resolution: 'provinces'
   };
 
   constructor() { }
 
   ngOnInit(): void {
     this.processData(this.data);
-    this.geoChartOptions.title = this.chartTitle;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -53,7 +50,7 @@ export class GeochartComponent implements OnInit, OnChanges {
 
   private processData(data: any): void {
     if (data && data.length > 0) {
-      this.geochartData = data.filter(item => item.key).map( item => [item.key, +item.count]);
+      this.geochartData = data.filter(item => item.key).map( item => [item.key, {v: +item.count, f: `No. of Opps: ${item.count}`}]);
     }
   }
 

@@ -10,8 +10,33 @@
 .tile:hover{
   cursor: pointer;
 }
+.tile.tile-lg {
+  width: 63%;
+}
 
-.filter-bar {
-  margin: 1.5%;
+.top-bar {
+  margin: 2.5% 1.5% 0;
+  app-filters, button {
+    display: inline-block;
+  }
+  app-filters {
+    width: 87%;
+  }
+}
+
+.loading-screen {
   text-align: center;
+  font-size: 1em;
+  font-style: italic;
+  color: gray;
+  margin: 28%;
+}
+
+@media screen and (max-width: 860px) {
+  .tile {
+    width: 100%;
+  }
+  .tile.tile-lg {
+    width: 100%;;
+  }
 }
