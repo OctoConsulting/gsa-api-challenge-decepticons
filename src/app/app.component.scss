@@ -1,23 +1,6 @@
-.nav.list {
-  list-style: none;
-}
-
-.displayName {
-  float: right;
-}
-
-.title, 
-.displayName {
-  display: inline-block;
-}
-
 .title {
   font-size: 24px;
-}
-
-.displayName {
-  font-size: 14px;
-  margin-left: auto;
+  display: inline-block;
 }
 
 .custom-color {

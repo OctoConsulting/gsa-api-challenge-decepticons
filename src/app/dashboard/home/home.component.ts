@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   public barchart2Data = [];
   public barchart3Data = [];
   public barchart4Data = [];
+  public barchart5Data = [];
 
   public geochartData = [];
 
@@ -75,6 +76,7 @@ export class HomeComponent implements OnInit {
       this.fetchByNAICSCode(filterOptions),
       this.fetchBySetAsideCode(filterOptions),
       this.fetchByClassificationCode(filterOptions),
+      this.fetchByYear(filterOptions),
       this.fetchGeoChartData(filterOptions)])
       .subscribe(
         responses => {
@@ -84,7 +86,8 @@ export class HomeComponent implements OnInit {
           this.barchart2Data = responses[3];
           this.barchart3Data = responses[4];
           this.barchart4Data = responses[5];
-          this.geochartData = responses[6];
+          this.barchart5Data = responses[6];
+          this.geochartData = responses[7];
           this.loading = false;
         },
         error => console.log(error)
@@ -115,6 +118,10 @@ export class HomeComponent implements OnInit {
     return this.apiService.getOppCountsByClassificationCode(queryParams);
   }
 
+  private fetchByYear(queryParams = {}): Observable<any> {
+    return this.apiService.getOppCountsByYear(queryParams);
+  }
+
   private fetchGeoChartData(queryParams = {}): Observable<any> {
     return this.apiService.getOppCountsByGeoData(queryParams);
   }
@@ -126,11 +133,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public onViewDetails(type: string, title: string, data: any): void {
+  public onViewDetails(type: string, apiCall: string, title: string, data: any): void {
     const modalRef = this.dialog.open(DialogComponent, {
       height: (0.5 * window.innerHeight) + 'px',
       width: (0.8 * window.innerWidth) + 'px',
-      data: {type, title, data}
+      data: {chartType: type, apiCall, title, filterOptions : this.filterOptions, data}
     });
   }
 

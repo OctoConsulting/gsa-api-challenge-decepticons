@@ -1,8 +1,20 @@
 .filters {
-  // margin: auto;
+  width: 50%;
 }
 
 .filter {
   width: 50%;
   display: inline-block;
+}
+
+@media screen and (max-width: 860px) {
+  .filters {
+    width: 78%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .filters {
+    width: 78%;
+  }
 }

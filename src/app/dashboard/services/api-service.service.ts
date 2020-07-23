@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  // private readonly baseUrl = 'http://34.205.247.199:8080/opps/v1';
+  private readonly baseUrl = 'http://34.205.247.199:8080/opps/v1';
 
-  private readonly baseUrl = 'http://127.0.0.1:3000';
+  // private readonly baseUrl = 'http://127.0.0.1:3000';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -38,6 +38,10 @@ export class ApiService {
 
   getOppCountsByClassificationCode(queryParams: any): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/byclassificationcode`, {params: queryParams});
+  }
+
+  getOppCountsByYear(queryParams: any): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/byyear`, {params: queryParams});
   }
 
   getOppCountsByGeoData(queryParams: any): Observable<any> {
